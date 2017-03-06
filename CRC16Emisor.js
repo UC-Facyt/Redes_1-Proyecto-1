@@ -74,14 +74,13 @@ function ColocarBanderas(Trama)
 	Trama.push(1);
 	Trama.push(0);
 	return(Trama);
-
 }
 
 function SumaDeVerificacion(Trama)//recibe como parametro un Array//
 {
 	var divisor=[1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1];
 	var tamcadena=Trama.length;
-	var resto = new Array()
+	var resto = new Array();
 	var Trama;
 	var tamDivisos=divisor.length-1;
 	var i=divisor.length;
@@ -143,8 +142,7 @@ function CRC16(Trama)//recibe como parametro una cadena //
 	}
 
 	while( i< Trama.length  )
-	{
-			
+	{	
 		if(resto [0] == 0)
 		{
 				var primero = resto .shift();
@@ -162,10 +160,8 @@ function CRC16(Trama)//recibe como parametro una cadena //
 
 		while(j <= 16 && n == 17)
 		{
-			
 					resto [j]=verificar( resto [j], divisor[j]);
 					j++;
-
 		}
 				i++;
 	}
@@ -174,10 +170,7 @@ function CRC16(Trama)//recibe como parametro una cadena //
 
 	if(resto [0]== 0 && 16<resto.length )
 	{
-
 		k++;
-
-
 	}
 	
 	for(j=k;j<=tamDivisos;j++)
@@ -185,9 +178,7 @@ function CRC16(Trama)//recibe como parametro una cadena //
 		Trama[tamcadena]=resto [j];
 		tamcadena++;
 	}
-		
 		return (Trama);
-
 }//retorna un Array//
 
 

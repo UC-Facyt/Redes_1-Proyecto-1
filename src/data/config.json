@@ -1,5 +1,5 @@
 {
   "flag" : "01111110",
-  "packetFileName": "tests.in",
+  "packetFileName": "./data/tests.in",
   "frameLength": 1024
 }
