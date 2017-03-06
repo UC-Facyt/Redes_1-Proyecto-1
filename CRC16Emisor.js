@@ -1,8 +1,8 @@
-//variables //
+/variables //
 var Trama;//cadena con los datos a enciar  que se quiere enviar//
 var TramaCodificada;
-var TramaCodificadaConBanderas;
-var TramaCodificadaConBanderasConBit;
+var TramaCodificadaConRellenoDeBitConBanderas;
+var TramaCodificadaConRellenoDeBit;
 
 //----main()------//
 
@@ -11,12 +11,11 @@ Trama="1111110101011111110"; // se tabaja la trama como cadena
 
 console.log(Trama);
 TramaCodificada=CRC16(Trama);//CRC16  recibe un cadena  
-
 console.log(TramaCodificada.join(""));
-TramaCodificadaConBanderas =  ColocarBanderas(TramaCodificada);
-console.log(TramaCodificadaConBanderas.join(""));
-TramaCodificadaConBanderasConBit=RellenoDeBit(TramaCodificadaConBanderas);
-console.log(TramaCodificadaConBanderasConBit);
+TramaCodificadaConRellenoDeBit=RellenoDeBit(TramaCodificada)
+console.log(TramaCodificadaConRellenoDeBit.join(""));
+TramaCodificadaConRellenoDeBitConBanderas =  ColocarBanderas(TramaCodificadaConRellenoDeBit);
+console.log(TramaCodificadaConRellenoDeBitConBanderas);
 
 
 
@@ -51,7 +50,7 @@ function RellenoDeBit(TramaCodificadaConBanderas)//recibe como parametro un Arra
 
 		i++;
 	}
-		return(TramaCodificadaConBanderas.join(""));
+		return(TramaCodificadaConBanderas);
 }//retorna una cadena//
 
 //recibe como parametro un Array//
@@ -73,7 +72,7 @@ function ColocarBanderas(Trama)
 	Trama.push(1);
 	Trama.push(1);
 	Trama.push(0);
-	return(Trama);
+	return(Trama.join(""));
 
 }
 
