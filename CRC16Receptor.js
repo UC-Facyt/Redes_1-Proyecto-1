@@ -1,30 +1,28 @@
 var Trama;
 var TramaCodificada;
-var TramaCodificadaConBanderas;
-var TramaCodificadaConBanderasConBit="0111110101111101010101111101100111010000111000011111010";//Trama  codificada de ejemplo //
+var TramaCodificadaConRellenoDebit;
+var TramaCodificadaConBanderasConBit="01111110111110101010111110110011101000011100001111110";//Trama  codificada de ejemplo //
 
 console.log(TramaCodificadaConBanderasConBit);
-TramaCodificadaConBanderas=QuitarBitDeRelleno(TramaCodificadaConBanderasConBit);
-console.log(TramaCodificadaConBanderas.join(""));
-TramaCodificada=QuitarBanderas(TramaCodificadaConBanderas);
+TramaCodificadaConRellenoDebit=QuitarBanderas(TramaCodificadaConBanderasConBit);
+console.log(TramaCodificadaConRellenoDebit.join(""));
+TramaCodificada=QuitarBitDeRelleno(TramaCodificadaConRellenoDebit);
 console.log(TramaCodificada.join(""));
 Trama=QuitarCRC16(TramaCodificada);
 console.log(Trama);
 
-
-
-function QuitarBitDeRelleno(TramaCodificadaConBanderasConBit)//recibe como parametro un Array//
+function QuitarBitDeRelleno(TramaCodificadaConRellenoDebit)//recibe como parametro un Array//
 {
 	var i=0;
 	var j=0;
-	TramaCodificadaConBanderasConBit=TramaCodificadaConBanderasConBit.split("");
-	while(i<TramaCodificadaConBanderasConBit.length)
+	
+	while(i<TramaCodificadaConRellenoDebit.length)
 	{
-			if(TramaCodificadaConBanderasConBit[i] == 1)
+			if(TramaCodificadaConRellenoDebit[i] == 1)
 			{
 				j++;
 			}
-			if(TramaCodificadaConBanderasConBit[i] == 0)
+			if(TramaCodificadaConRellenoDebit[i] == 0)
 			{
 				j=0;
 			}
@@ -32,14 +30,14 @@ function QuitarBitDeRelleno(TramaCodificadaConBanderasConBit)//recibe como param
 			if(j==5)
 			{
 				
-				TramaCodificadaConBanderasConBit.splice(i+1,1);
+				TramaCodificadaConRellenoDebit.splice(i+1,1);
 				i--;
 				j=0;
 			}	
 
 		i++;
 	}
-		return(TramaCodificadaConBanderasConBit);
+		return(TramaCodificadaConRellenoDebit);
 
 }//retorna un Array//
 
@@ -56,23 +54,24 @@ function verificarBandera(Array, i)
 
 
 
-function QuitarBanderas(TramaCodificadaConBanderas)//recibe como parametro un Array//
+function QuitarBanderas(TramaCodificadaConBanderasConBit)//recibe como parametro una cadena//
 {
 	var i=0;
 	var j;
 	var k;
-	while(i<= TramaCodificadaConBanderas.length-8)
+	TramaCodificadaConBanderasConBit=TramaCodificadaConBanderasConBit.split("");
+	while(i<= TramaCodificadaConBanderasConBit.length-8)
 	{
 
 		
-		if(verificarBandera(TramaCodificadaConBanderas, i) ==1)
+		if(verificarBandera(TramaCodificadaConBanderasConBit, i) ==1)
 		{
 			k=0;
 			
 			while(k < 8)
 			{
 
-				var eliminado=TramaCodificadaConBanderas.splice(i,1);
+				var eliminado=TramaCodificadaConBanderasConBit.splice(i,1);
 				k++;
 			}
 			i--;
@@ -82,7 +81,7 @@ function QuitarBanderas(TramaCodificadaConBanderas)//recibe como parametro un Ar
 	i++;
 	}
 
-	return(TramaCodificadaConBanderas)
+	return(TramaCodificadaConBanderasConBit)
 }//retorna un Array//
 
 function QuitarCRC16(TramaCodificada)//recibe como parametro un Array//
@@ -99,4 +98,4 @@ function QuitarCRC16(TramaCodificada)//recibe como parametro un Array//
 
 
 	return(TramaCodificada.join(""));
-}//recibe como parametro una cadena//
+}
