@@ -1,22 +1,29 @@
 
 const encode = require('./binary_string').encode;
+const addChecksum = require('./CRC').addChecksum;
+const checksum = require('/CRC').checksum;
 
 function DataLinkLayer(configData){
   //-------attributes--------
   this.flag = configData.flag;
   this.packetFileName = configData.packetFileName;
   this.frameLength = configData.frameLength;
+  this.generator = configData.generator;
   //--------methods----------
+  //enviar un paquete
   this.send = packet => prepare(packet); //prepara y envia el paquete
+  //impresión de debugging
+  this.debugPrint = 
   //--------privados---------
   //prepara el paquete para ser enviado en frames
-  const prepare = packet => splitPacket(encode(packet)).map(frame => putFlags(bitStuffing(frame))); 
+  const prepare = packet => splitPacket(encode(packet)).map(frame => putFlags(bitStuffing(frame)));
   //retorna un arreglo de frames
   const splitPacket = packet => packet.match(new RegExp(`.{1,${this.frameLength}}`, 'g'));
   //agrega banderas al inicio y fin del paquete
   const putFlags = data => `${this.flag}${data}${this.flag}`;
   //realiza el relleno de bits
   const bitStuffing = data => data.replace(/11111/g, '111110'); 
+
 };
 
 fs = require('fs');

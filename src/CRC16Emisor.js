@@ -12,7 +12,6 @@ Trama="1111110101011111110"; // se tabaja la trama como cadena
 console.log(Trama);
 TramaCodificada=CRC16(Trama);//CRC16  recibe un cadena  
 console.log(TramaCodificada.join("").slice(-divisor.length + 1));
-console.log(CRC(addGenerator(Trama.split(''), divisor), divisor).join(''));
 //TramaCodificadaConRellenoDeBit=RellenoDeBit(TramaCodificada)
 //console.log(TramaCodificadaConRellenoDeBit.join(""));
 //TramaCodificadaConRellenoDeBitConBanderas =  ColocarBanderas(TramaCodificadaConRellenoDeBit);
