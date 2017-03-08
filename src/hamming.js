@@ -1,12 +1,9 @@
-// import { isPowerOfTwo } from './utilities';
-const isPowerOfTwo = require('./utilities').isPowerOfTwo;
-const bin2Dec = require('./utilities').bin2Dec;
-const isEven = require('./utilities').isEven;
+const { isPowerOfTwo, bin2Dec, isEven } = require('./utilities');
 
 function encode(message) {
 	const parityBits = getParityBits(message.length);
 	const bitArray = getBitArray(message, parityBits);
-	
+
 	const related = bitArray
 		.map((bit, index) => ({ bit, pos: index+1 }))
 		.filter(data => typeof data.bit !== 'undefined');
@@ -24,7 +21,7 @@ function decode() {
 }
 
 function calculateParityBit(bit, related) {
-	let sum = 0;
+	// let sum = 0;
 	/* //imperative is for gays
 	for (let data of related) {
 		if ((bit & data.pos) !== 0) {
@@ -32,10 +29,13 @@ function calculateParityBit(bit, related) {
 		}
 	}
 	*/
-return isEven(related.reduce((sum, data, pos) => (bit & pos) !== 0 ? sum + bin2Dec(data.bit) : sum, 0))
-	//return isEven(sum) ? '0' : '1';
+	return isEven(
+		related.reduce(
+			(sum, data) => (bit & data.pos) !== 0 ? sum + bin2Dec(data.bit) : sum,
+			0
+		)
+	) ^ 1;
 }
-
 
 function getBitArray(message, parityBits) {
 	const totalBits = message.length + parityBits;
@@ -49,10 +49,6 @@ function getBitArray(message, parityBits) {
 	return related;
 }
 
-function relatedBits(bitArray) {
-	let related = {};
-}
-
 function getParityBits(size) {
 	let res = 0;
 	let i = 0;
@@ -60,10 +56,14 @@ function getParityBits(size) {
 		const power = Math.pow(2, i);
 		if (power <= (size + res))
 			res++;
-		else 
+		else
 			return res;
 		i++;
-	}	
+	}
 }
 
-//console.log(encode('11'));
+const Hamming = {
+	encode,
+};
+
+exports = Hamming;
