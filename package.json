@@ -4,7 +4,8 @@
   "description": "a simple file for tests",
   "main": "tests.js",
   "dependencies": {
-    "async": "^2.1.5"
+    "async": "^2.1.5",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -12,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"nb": "babel-node"
+    "nb": "babel-node"
   },
   "author": "",
   "license": "ISC"

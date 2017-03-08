@@ -25,6 +25,7 @@ const dec2Bin = decimal => (decimal >>> 0).toString(2);
 const bin2Dec = binary => parseInt(binary, 2);
 const leftPad = str => str.leftPad(8, '0');
 const isEven = n => (n % 2 === 0);
+const zip = rows => rows[0].map((_,c) => rows.map(row => row[c]));
 
 module.exports =  {
 	isPowerOfTwo,
@@ -33,5 +34,8 @@ module.exports =  {
 	dec2Bin,
 	bin2Dec,
 	leftPad,
-	isEven
+	isEven,
+	zip
 };
+
+

@@ -3,7 +3,7 @@ var Trama;//cadena con los datos a enciar  que se quiere enviar//
 var TramaCodificada;
 var TramaCodificadaConRellenoDeBitConBanderas;
 var TramaCodificadaConRellenoDeBit;
-
+var divisor = [1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1];
 //----main()------//
 
 //trama de ejemplo //
@@ -11,11 +11,12 @@ Trama="1111110101011111110"; // se tabaja la trama como cadena
 
 console.log(Trama);
 TramaCodificada=CRC16(Trama);//CRC16  recibe un cadena  
-console.log(TramaCodificada.join(""));
-TramaCodificadaConRellenoDeBit=RellenoDeBit(TramaCodificada)
-console.log(TramaCodificadaConRellenoDeBit.join(""));
-TramaCodificadaConRellenoDeBitConBanderas =  ColocarBanderas(TramaCodificadaConRellenoDeBit);
-console.log(TramaCodificadaConRellenoDeBitConBanderas);
+console.log(TramaCodificada.join("").slice(-divisor.length + 1));
+console.log(CRC(addGenerator(Trama.split(''), divisor), divisor).join(''));
+//TramaCodificadaConRellenoDeBit=RellenoDeBit(TramaCodificada)
+//console.log(TramaCodificadaConRellenoDeBit.join(""));
+//TramaCodificadaConRellenoDeBitConBanderas =  ColocarBanderas(TramaCodificadaConRellenoDeBit);
+//console.log(TramaCodificadaConRellenoDeBitConBanderas);
 
 
 
@@ -83,16 +84,16 @@ function SumaDeVerificacion(Trama)//recibe como parametro un Array//
 	var tamDivisos=divisor.length-1;
 	var i=divisor.length;
 	
-	for(j=0;j<tamDivisos;j++)
+	for(let j=0;j<tamDivisos;j++)
 	{
 		Trama .push(0);
 	}
 	
-	for(j=0;j<=tamDivisos;j++)
+	for(let j=0;j<=tamDivisos;j++)
 	{
 		resto .push(verificar( Trama[j], divisor[j]));
 	}
-
+	let j = 0;
 	while( i< Trama.length  )
 	{
 			
@@ -129,16 +130,16 @@ function CRC16(Trama)//recibe como parametro una cadena //
 	var tamDivisos=divisor.length-1;
 	var i=divisor.length;
 	
-	for(j=0;j<tamDivisos;j++)
+	for(let j=0;j<tamDivisos;j++)
 	{
 		Trama .push(0);
 	}
 
-	for(j=0;j<=tamDivisos;j++)
+	for(let j=0;j<=tamDivisos;j++)
 	{
 		resto .push(verificar( Trama[j], divisor[j]));
 	}
-
+	let j = 0;
 	while( i< Trama.length  )
 	{	
 		if(resto [0] == 0)
@@ -171,7 +172,7 @@ function CRC16(Trama)//recibe como parametro una cadena //
 		k++;
 	}
 	
-	for(j=k;j<=tamDivisos;j++)
+	for(let j=k;j<=tamDivisos;j++)
 	{
 		Trama[tamcadena]=resto [j];
 		tamcadena++;
@@ -233,5 +234,27 @@ function Contar(cadena)//recibe como parametro un Array//
 
 
 
-/**/
+/* CRC version de javier */
 
+function addGenerator(frame, generator){
+	return frame.concat(new Array(generator.length - 1).fill('0'));
+};
+
+function CRC(dividend, divisor){
+	const XOR = (a, b) => a.map((bit, i) => bit != b[i] ? '1' : '0');
+	const CRCR = (dividend, remainder) => {
+		let shiftedRemainder = remainder.slice(remainder.indexOf('1'));
+		if(shiftedRemainder.length + dividend.length < divisor.length){
+			return remainder.concat(dividend).slice(-divisor.length + 1);
+		}else{
+			let bitsNeeded = divisor.length - shiftedRemainder.length;
+			return CRCR(dividend.slice(bitsNeeded), XOR(shiftedRemainder.concat(dividend.slice(0, bitsNeeded)), divisor));
+		}
+	};
+	return CRCR(dividend.split('').slice(divisor.length), XOR(dividend.slice(0, divisor.length), divisor));
+};
+
+module.exports = {
+	CRC,
+	addGenerator
+};

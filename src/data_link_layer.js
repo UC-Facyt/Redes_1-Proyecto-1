@@ -16,7 +16,7 @@ function DataLinkLayer(configData){
   //agrega banderas al inicio y fin del paquete
   const putFlags = data => `${this.flag}${data}${this.flag}`;
   //realiza el relleno de bits
-  const bitStuffing = data => data.replace(/11111/g, '111110');
+  const bitStuffing = data => data.replace(/11111/g, '111110'); 
 };
 
 fs = require('fs');

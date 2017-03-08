@@ -25,12 +25,15 @@ function decode() {
 
 function calculateParityBit(bit, related) {
 	let sum = 0;
+	/* //imperative is for gays
 	for (let data of related) {
 		if ((bit & data.pos) !== 0) {
 			sum += bin2Dec(data.bit);
 		}
 	}
-	return isEven(sum) ? '0' : '1';
+	*/
+return isEven(related.reduce((sum, data, pos) => (bit & pos) !== 0 ? sum + bin2Dec(data.bit) : sum, 0))
+	//return isEven(sum) ? '0' : '1';
 }
 
 
