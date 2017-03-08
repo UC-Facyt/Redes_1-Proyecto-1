@@ -24,11 +24,11 @@ function CRC(dividend, divisor){
 	return CRCR(dividend.split('').slice(divisor.length), XOR(dividend.slice(0, divisor.length).split(''), divisor.split('')));
 };
 
-let divisor = "10001000000100001";
-let trama = "1111110101011111110";
+//let divisor = "10001000000100001";
+//let trama = "1111110101011111110";
 
-console.log(divisor);
-console.log(CRC(addGenerator(trama, divisor), divisor).join(''));
+//console.log(divisor);
+//console.log(CRC(addGenerator(trama, divisor), divisor).join(''));
 
 module.exports = {
 	addChecksum,

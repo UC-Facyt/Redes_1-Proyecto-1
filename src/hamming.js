@@ -66,4 +66,4 @@ function getParityBits(size) {
 	}	
 }
 
-console.log(encode('11'));
+//console.log(encode('11'));

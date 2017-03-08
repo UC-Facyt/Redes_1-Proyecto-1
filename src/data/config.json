@@ -1,6 +1,6 @@
 {
   "flag" : "01111110",
-  "packetFileName": "./data/tests.in",
+  "packetFileName": "./src/data/tests.in",
   "frameLength": 1024,
-  "generator": "10001000000100001",
+  "generator": "10001000000100001"
 }
