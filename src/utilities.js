@@ -20,11 +20,11 @@ if (!String.prototype.leftPad) {
 
 const isPowerOfTwo = n => (n !== 0) && ((n & (n - 1)) === 0);
 const char2Ascii = char => char.charCodeAt(0);
-const ascii2Char = n => String.fromCharCode(n)
+const ascii2Char = n => String.fromCharCode(n);
 const dec2Bin = decimal => (decimal >>> 0).toString(2);
 const bin2Dec = binary => parseInt(binary, 2);
 const leftPad = str => str.leftPad(8, '0');
-const isEven = n => (n % 2 === 0);
+const isEven = n => !(n & 1);
 const zip = rows => rows[0].map((_,c) => rows.map(row => row[c]));
 
 module.exports =  {
@@ -37,5 +37,3 @@ module.exports =  {
 	isEven,
 	zip
 };
-
-
