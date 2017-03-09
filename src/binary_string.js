@@ -26,14 +26,9 @@ function decode(encodedMessage) {
 		.join('')
 }
 
-const encodedMessage = encode('Hamming code');
-// console.log(encodedMessage);
-console.log(decode(encodedMessage));
-
 const BinaryString = {
 	encode,
 	decode
 };
 
-// export default BinaryString;
 module.exports = BinaryString;
