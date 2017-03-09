@@ -1,4 +1,5 @@
 const { isPowerOfTwo, bin2Dec, isEven } = require('./utilities');
+const { notifyError } = require('./ErrorHandler');
 
 function encode(message) {
 	const parityBits = getParityBits(message.length);
@@ -16,22 +17,32 @@ function encode(message) {
 	return bitArray.join('');
 }
 
-function decode(message){
-	let parityString = '';
-	let invert = bit => bit == '1' ? '0' : '1';
-	let related = message.map((bit, index) => ({ bit, pos: index + 1}));
-	for(let i = 0; i < bitArray.length; i++){
-		if(isPowerOfTwo(i+1)){
-			calculateParityBit(i+1, related);
+function decode(message) {
+	let related = message
+		.split('')
+		.filter((e, index) => !isPowerOfTwo(index + 1))
+		.map((bit, index) => ({ bit, pos: index+1 }));
+
+	let damagedBits = [];
+	for (let [index, bit] of message.split('').entries()) {
+		if (isPowerOfTwo(index + 1)) {
+			let parityBit = calculateParityBit(index + 1, related);
+			if (parityBit != bit) {
+				damagedBits.push(index + 1);
+				notifyError({ message: `Wrong parity bit at position ${index + 1}` });
+			}
 		}
 	}
-	let result = bin2Dec(parityString);
-	if(result == 0){
-		return related.filter((data) => !isPowerOfTwo(data.pos));
-	}else{
-		related[result + 1] = invert(related[result + 1]);
-		return related;
+
+	if (damagedBits.length > 0) {
+		// notifyError({ message: `Wrong parity bit at position ` });
 	}
+
+	let remove = message
+		.split('')
+		.filter((e, index) => !isPowerOfTwo(index + 1));
+
+	return remove.join('');
 }
 
 function calculateParityBit(bit, related) {
@@ -78,6 +89,11 @@ function getParityBits(size) {
 
 const Hamming = {
 	encode,
+	decode
 };
 
 module.exports = Hamming;
+
+const encoded = Hamming.encode('1101');
+console.log(encoded)
+console.log(Hamming.decode(encoded));

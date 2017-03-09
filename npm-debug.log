@@ -1,49 +1,27 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
-1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ 'D:\\tools\\nodejs\\node.exe',
+1 verbose cli   'D:\\tools\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'run',
-1 verbose cli   'nb',
-1 verbose cli   '.\\src\\data_link_layer.js' ]
+1 verbose cli   'start' ]
 2 info using npm@4.1.2
 3 info using node@v7.7.1
-4 verbose run-script [ 'prenb', 'nb', 'postnb' ]
-5 info lifecycle tests@1.0.0~prenb: tests@1.0.0
-6 silly lifecycle tests@1.0.0~prenb: no script for prenb, continuing
-7 info lifecycle tests@1.0.0~nb: tests@1.0.0
-8 verbose lifecycle tests@1.0.0~nb: unsafe-perm in lifecycle true
-9 verbose lifecycle tests@1.0.0~nb: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\javier\Desktop\Estudios\Codes\Javascript\proyecto redes capa de enlace\node_modules\.bin;C:\Users\javier\Documents\Dev Tools\Cmder\bin;C:\Users\javier\Documents\Dev Tools\Cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\Users\javier\Documents\Dev Tools\Cmder\vendor\conemu-maximus5;C:\Users\javier\Documents\Dev Tools\Cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files\Haskell\bin;C:\Program Files\Haskell Platform\8.0.2\lib\extralibs\bin;C:\Program Files\Haskell Platform\8.0.2\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;"C:\Program Files\Java\jdk1.8.0_101\bin";C:\Program Files (x86)\sbt\\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\wamp64\bin\php\php5.6.25;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PostgreSQL\pg96\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Haskell Platform\8.0.2\mingw\bin;C:\Program Files\nodejs\;C:\Users\javier\AppData\Roaming\cabal\bin;C:\Users\javier\AppData\Roaming\local\bin;C:\Users\javier\AppData\Local\atom\bin;C:\Users\javier\AppData\Local\Microsoft\WindowsApps;C:\Users\javier\AppData\Roaming\Composer\vendor\bin;C:\Users\javier\AppData\Roaming\npm;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\Users\javier\Documents\Dev Tools\Cmder\
-10 verbose lifecycle tests@1.0.0~nb: CWD: C:\Users\javier\Desktop\Estudios\Codes\Javascript\proyecto redes capa de enlace
-11 silly lifecycle tests@1.0.0~nb: Args: [ '/d /s /c', 'babel-node ".\\src\\data_link_layer.js"' ]
-12 silly lifecycle tests@1.0.0~nb: Returned: code: 1  signal: null
-13 info lifecycle tests@1.0.0~nb: Failed to exec nb script
-14 verbose stack Error: tests@1.0.0 nb: `babel-node ".\src\data_link_layer.js"`
-14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:279:16)
-14 verbose stack     at emitTwo (events.js:106:13)
-14 verbose stack     at EventEmitter.emit (events.js:194:7)
-14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
-14 verbose stack     at emitTwo (events.js:106:13)
-14 verbose stack     at ChildProcess.emit (events.js:194:7)
-14 verbose stack     at maybeClose (internal/child_process.js:899:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
-15 verbose pkgid tests@1.0.0
-16 verbose cwd C:\Users\javier\Desktop\Estudios\Codes\Javascript\proyecto redes capa de enlace
-17 error Windows_NT 10.0.14393
-18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "nb" ".\\src\\data_link_layer.js"
-19 error node v7.7.1
-20 error npm  v4.1.2
-21 error code ELIFECYCLE
-22 error tests@1.0.0 nb: `babel-node ".\src\data_link_layer.js"`
-22 error Exit status 1
-23 error Failed at the tests@1.0.0 nb script 'babel-node ".\src\data_link_layer.js"'.
-23 error Make sure you have the latest version of node.js and npm installed.
-23 error If you do, this is most likely a problem with the tests package,
-23 error not with npm itself.
-23 error Tell the author that this fails on your system:
-23 error     babel-node ".\src\data_link_layer.js"
-23 error You can get information on how to open an issue for this project with:
-23 error     npm bugs tests
-23 error Or if that isn't available, you can get their info via:
-23 error     npm owner ls tests
-23 error There is likely additional logging output above.
-24 verbose exit [ 1, true ]
+4 verbose stack Error: missing script: start
+4 verbose stack     at run (D:\tools\nvm\v7.7.1\node_modules\npm\lib\run-script.js:151:19)
+4 verbose stack     at D:\tools\nvm\v7.7.1\node_modules\npm\lib\run-script.js:61:5
+4 verbose stack     at D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\read-package-json\read-json.js:356:5
+4 verbose stack     at checkBinReferences_ (D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\read-package-json\read-json.js:320:45)
+4 verbose stack     at final (D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\read-package-json\read-json.js:354:3)
+4 verbose stack     at then (D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\read-package-json\read-json.js:124:5)
+4 verbose stack     at D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\read-package-json\read-json.js:311:12
+4 verbose stack     at D:\tools\nvm\v7.7.1\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:78:16
+4 verbose stack     at tryToString (fs.js:448:3)
+4 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:435:12)
+5 verbose cwd D:\Projects\university\Redes_1-Proyecto-1
+6 error Windows_NT 10.0.14393
+7 error argv "D:\\tools\\nodejs\\node.exe" "D:\\tools\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "start"
+8 error node v7.7.1
+9 error npm  v4.1.2
+10 error missing script: start
+11 error If you need help, you may report this error at:
+11 error     <https://github.com/npm/npm/issues>
+12 verbose exit [ 1, true ]

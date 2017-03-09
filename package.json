@@ -1,20 +1,46 @@
 {
-  "name": "tests",
-  "version": "1.0.0",
-  "description": "a simple file for tests",
-  "main": "tests.js",
+  "name": "app",
+  "productName": "App",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "user/repo",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "scripts": {
+    "test": "xo",
+    "start": "electron .",
+    "build": "electron-packager . --out=dist --asar --overwrite --all"
+  },
+  "files": [
+    "index.js",
+    "index.html",
+    "index.css"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
   "dependencies": {
-    "async": "^2.1.5",
+    "angular": "^1.6.3",
+    "electron-debug": "^1.0.0",
+    "materialize-css": "^0.98.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-preset-latest": "^6.22.0"
+    "devtron": "^1.1.0",
+    "electron": "^1.0.1",
+    "electron-packager": "^8.0.0",
+    "xo": "^0.16.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "nb": "babel-node"
-  },
-  "author": "",
-  "license": "ISC"
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
 }

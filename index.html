@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>PCP</title>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="./node_modules/materialize-css/bin/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+	<div class="main-container" ng-app="HammingApp">
+
+		<section class="error-box z-depth-4" ng-controller="ErrorsCtrl as vm">
+			<article class="error scale-transition scale-out" ng-class="{
+				'red lighten-4': $index % 2 === 0,
+				'red lighten-2': $index % 2 !== 0
+			}" ng-repeat="error in vm.errors" ng-attr-id="{{'error-' + $index}}">
+				<p>{{error.error}}</p>
+			</article>
+		</section>
+
+		<section class="file-drop z-depth-4">
+			<div class="image-container">
+				<img  src="./images/file_icon.png" alt="">
+				<div class="switch">
+			    <label>
+			      CRC
+			      <input id="type" type="checkbox" onclick="changeType(this.checked)">
+			      <span class="lever"></span>
+			      Hamming
+			    </label>
+			  </div>
+			</div>
+		</section>
+
+	</div>
+
+	<script src="./node_modules/materialize-css/bin/jquery-2.1.1.min.js"></script>
+	<script src="./js/hammer.js"></script>
+	<script src="./node_modules/materialize-css/bin/materialize.js"></script>
+	<script src="./node_modules/angular/angular.js"></script>
+	<script src="./js/main.js"></script>
+</body>
+</html>
