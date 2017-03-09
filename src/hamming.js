@@ -66,4 +66,4 @@ const Hamming = {
 	encode,
 };
 
-exports = Hamming;
+module.exports = Hamming;
