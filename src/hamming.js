@@ -16,8 +16,22 @@ function encode(message) {
 	return bitArray.join('');
 }
 
-function decode() {
-
+function decode(message){
+	let parityString = '';
+	let invert = bit => bit == '1' ? '0' : '1';
+	let related = message.map((bit, index) => ({ bit, pos: index + 1}));
+	for(let i = 0; i < bitArray.length; i++){
+		if(isPowerOfTwo(i+1)){
+			calculateParityBit(i+1, related);
+		}
+	}
+	let result = bin2Dec(parityString);
+	if(result == 0){
+		return related.filter((data) => !isPowerOfTwo(data.pos));
+	}else{
+		related[result + 1] = invert(related[result + 1]);
+		return related;
+	}
 }
 
 function calculateParityBit(bit, related) {
